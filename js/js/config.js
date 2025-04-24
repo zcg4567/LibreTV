@@ -122,6 +122,32 @@ const API_SITES = {
         adult: true
     }
     // 您可以按需添加更多源
+        //新加
+    iby: {
+        api: 'http://lbapiby.com',
+        name: 'lbapiby资源',
+        adult: true
+    },
+    hapi9: {
+        api: 'http://fhapi9.com',
+        name: 'fhapi9资源',
+        adult: true
+    },
+    bapi9: {
+        api: 'https://lbapi9.com',
+        name: 'lbapi9资源',
+        adult: true
+    },
+    md: {
+        api: 'https://91md.me',
+        name: '91md资源',
+        adult: true
+    },
+    apilsbzy1: {
+        api: 'https://apilsbzy1.com',
+        name: 'apilsbzy1资源',
+        adult: true
+    },
 };
 
 // 添加聚合搜索的配置选项
