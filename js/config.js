@@ -1,9 +1,14 @@
 // 全局常量配置
-
-const PROXY_URL = 'https://cors.zme.ink/';
-const HOPLAYER_URL = 'https://hoplayer.com/index.html';
+const PROXY_URL = '/proxy/';    // 适用于Cloudflare, Netlify (带重写), Vercel (带重写)
+// const HOPLAYER_URL = 'https://hoplayer.com/index.html';
 const SEARCH_HISTORY_KEY = 'videoSearchHistory';
 const MAX_HISTORY_ITEMS = 5;
+
+// 密码保护配置
+const PASSWORD_CONFIG = {
+    localStorageKey: 'passwordVerified',  // 存储验证状态的键名
+    verificationTTL: 90 * 24 * 60 * 60 * 1000  // 验证有效期（90天，约3个月）
+};
 
 // 网站信息配置
 const SITE_CONFIG = {
@@ -11,7 +16,7 @@ const SITE_CONFIG = {
     url: 'https://libretv.is-an.org',
     description: '免费在线视频搜索与观看平台',
     logo: 'https://images.icon-icons.com/38/PNG/512/retrotv_5520.png',
-    version: '1.0.0'
+    version: '1.0.3'
 };
 
 // API站点配置
@@ -28,7 +33,7 @@ const API_SITES = {
     },
     tyyszy: {
         api: 'https://tyyszy.com',
-        name: '天涯资源',
+        name: '天涯资源'
     },
     ckzy: {
         api: 'https://www.ckzy1.com',
@@ -37,19 +42,19 @@ const API_SITES = {
     },
     zy360: {
         api: 'https://360zy.com',
-        name: '360资源',
+        name: '360资源'
     },
     wolong: {
         api: 'https://wolongzyw.com',
-        name: '卧龙资源',
+        name: '卧龙资源'
     },
     cjhw: {
         api: 'https://cjhwba.com',
-        name: '新华为',
+        name: '新华为'
     },
     hwba: {
         api: 'https://cjwba.com',
-        name: '华为吧资源',
+        name: '华为吧资源'
     },
     jisu: {
         api: 'https://jszyapi.com',
@@ -58,23 +63,23 @@ const API_SITES = {
     },
     dbzy: {
         api: 'https://dbzy.com',
-        name: '豆瓣资源',
+        name: '豆瓣资源'
     },
     bfzy: {
         api: 'https://bfzyapi.com',
-        name: '暴风资源',
+        name: '暴风资源'
     },
     mozhua: {
         api: 'https://mozhuazy.com',
-        name: '魔爪资源',
+        name: '魔爪资源'
     },
     mdzy: {
         api: 'https://www.mdzyapi.com',
-        name: '魔都资源',
+        name: '魔都资源'
     },
     ruyi: {
         api: 'https://cj.rycjapi.com',
-        name: '如意资源',
+        name: '如意资源'
     },
     jkun: {
         api: 'https://jkunzyapi.com',
@@ -91,11 +96,6 @@ const API_SITES = {
         name: 'souav资源',
         adult: true
     },
-    siwa: {
-        api: 'https://siwazyw.tv',
-        name: '丝袜资源',
-        adult: true
-    },
     r155: {
         api: 'https://155api.com',
         name: '155资源',
@@ -110,9 +110,18 @@ const API_SITES = {
         api: 'https://hsckzy.vip',
         name: '黄色仓库',
         adult: true,
-        detail: 'https://hsckzy.vip' // 添加detail URL以便特殊处理
+        detail: 'https://hsckzy.vip'
     },
-    //新加
+    zuid: {
+        api: 'https://api.zuidapi.com',
+        name: '最大资源'
+    },
+    yutu: {
+        api: 'https://yutuzy10.com',
+        name: '玉兔资源',
+        adult: true
+    },
+    // 您可以按需添加更多源
     iby: {
         api: 'http://lbapiby.com',
         name: 'lbapiby资源',
@@ -137,7 +146,7 @@ const API_SITES = {
         api: 'https://apilsbzy1.com',
         name: 'apilsbzy1资源',
         adult: true
-    },
+    }
 };
 
 // 添加聚合搜索的配置选项
@@ -202,10 +211,7 @@ const SECURITY_CONFIG = {
     enableXSSProtection: true,  // 是否启用XSS保护
     sanitizeUrls: true,         // 是否清理URL
     maxQueryLength: 100,        // 最大搜索长度
-    allowedApiDomains: [        // 允许的API域名
-        'heimuer.xyz',
-        'ffzy5.tv'
-    ]
+    // allowedApiDomains不再需要，因为所有请求都通过内部代理
 };
 
 // 添加多个自定义API源的配置
@@ -217,7 +223,7 @@ const CUSTOM_API_CONFIG = {
     validateUrl: true,        // 验证URL格式
     cacheResults: true,       // 缓存测试结果
     cacheExpiry: 5184000000,  // 缓存过期时间(2个月)
-    adultPropName: 'isAdult'  // 用于标记成人内容的属性名
+    adultPropName: 'isAdult' // 用于标记成人内容的属性名
 };
 
 // 新增隐藏内置黄色采集站API的变量，默认为true
